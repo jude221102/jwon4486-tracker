@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sushi Track</title>
+    <!-- Adobe Fonts Embed Code -->
+    <link rel="stylesheet" href="https://use.typekit.net/ksl0xgj.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add this CSS to align the points part of the recipe */
+        .recipe-details {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 10px; /* Push the details more to the left */
+        }
+        .recipe-details p {
+            margin: 0;
+            font-weight: normal; /* Make the labels thicker */
+        }
+        .recipe-details .points {
+            margin-left: auto;
+            padding-left: 10px;
+        }
+        .recipe-details span {
+            font-weight: normal; /* Make the text after the colon less bold */
+        }
+        .progress-bar {
+            margin-top: 10px; /* Adjust the margin to space out the heading further down */
+            background-color: #e0e0e0; /* Gray background for the progress bar */
+            border-radius: 5px;
+            overflow: hidden;
+            height: 40px; /* Increased height to make the progress bar thicker */
+        }
+        .progress-bar-inner {
+            background-color: #76c7c0; /* Color for the filled part of the progress bar */
+            height: 100%;
+            width: 0;
+            text-align: right;
+            padding-right: 30px;
+            justify-content: flex-end; /* Align items to the right */
+            line-height: 30px; /* Adjusted based on the new height of the progress bar */
+            color: white;
+            border-radius: 5px 0 0 5px;
+        }
+        .recipes-container {
+            margin-top: 80px; /* Space out the Recommendations section further down */
+        }
+        .recipe-description, .recipe-ingredients {
+            font-weight: normal; /* Make the text less bold */
+        }
+        .recipe-description ol, .recipe-ingredients ul {
+            font-weight: 100px; /* Make the bullet points and numbered points less bold */
+        }
+        .recipe-heading, .recipe-name {
+            font-weight: normal; /* Make the headings thicker */
+        }
+    
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <div class="navbar">
+        <div class="logo">Sushi Track</div>
+        <a href="#home" id="home-link" class="active">Home</a>
+        <a href="#recipes" id="recipes-link">Recipes</a>
+        <a href="#favourites" id="favourites-link">Favourites</a>
+    </div>
+    <!-- Main container for Home section -->
+    <div class="container active" id="main-container"> <!-- Home section is active by default -->
+        <h1>Hello, Jude.</h1>
+        <!-- Progress bar -->
+        <div class="progress-bar">
+            <div id="progress-bar-inner" class="progress-bar-inner" data-progress="0">0 pts</div>
+        </div>
+        <!-- Recommendations Section -->
+        <h2 style="margin-top: 60px;">Recommendations</h2> <!-- Adjusted margin to move the heading further down -->
+        <div class="recipes-container">
+            <!-- Initially visible recipes -->
+            <div class="recipe" data-recipe-id="8" onclick="showRecipeDetails(event, 8)">
+                <img src="images/shrimp_nigiri.jpg" alt="Shrimp Nigiri">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Shrimp Nigiri</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="10" onclick="showRecipeDetails(event, 10)">
+                <img src="images/tuna_mayo_maki.jpg" alt="Tuna Mayo Maki">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Tuna Mayo Maki</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="3" onclick="showRecipeDetails(event, 3)">
+                <img src="images/salmon_avocado_roll.jpg" alt="Salmon Avocado Roll">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Salmon Avocado Roll</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="4" onclick="showRecipeDetails(event, 4)">
+                <img src="images/philadelphia_roll.jpg" alt="Philadelphia Roll">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Philadelphia Roll</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="5" onclick="showRecipeDetails(event, 5)">
+                <img src="images/inari_sushi.jpg" alt="Inari Sushi">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Inari Sushi</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="12" onclick="showRecipeDetails(event, 12)">
+                <img src="images/salmon_maki.jpg" alt="Salmon Maki">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Salmon Maki</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>   
+                </div>
+            </div>
+        </div>
+        <!-- This Week's Favourite Section -->
+        <h2>This Week's Favourite</h2>
+        <div class="recipes-container" id="this-weeks-favourites-container">
+            <div class="recipe" data-recipe-id="2" onclick="showRecipeDetails(event, 2)">
+                <img src="images/spicy_tuna_roll.jpg" alt="Spicy Tuna Roll">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Spicy Tuna Roll - Fresh tuna with a spicy kick of chili sauce.</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="1" onclick="showRecipeDetails(event, 1)">
+                <img src="images/california_roll.jpg" alt="California Roll">
+                <div class="recipe-footer">
+                    <p class="recipe-name">California Roll - A classic favorite with crab, avocado, and cucumber.</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>
+                </div>
+            </div>
+        </div>
+        <!-- Seasonal Specials Section -->
+        <h2>Seasonal Specials</h2>
+        <div class="recipes-container">
+            <!-- Specific rolls for Seasonal Specials -->
+            <div class="recipe" data-recipe-id="6" onclick="showRecipeDetails(event, 6)">
+                <img src="images/tamago_nigiri.jpg" alt="Tamago Nigiri">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Tamago Nigiri</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>            
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="7" onclick="showRecipeDetails(event, 7)">
+                <img src="images/salmon_nigiri.jpg" alt="Salmon Nigiri">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Salmon Nigiri</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>   
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- New Recipes Section -->
+    <div id="all-recipes" class="container">
+        <h2 style="margin-top: 10px;">All Recipes</h2> <!-- Adjusted margin to move the heading higher -->
+        <input type="text" id="search-bar" placeholder="Search recipes" onkeyup="searchRecipes()">
+        <div class="recipes-container">
+            <!-- List all recipes here -->
+            <div class="recipe" data-recipe-id="1" onclick="showRecipeDetails(event, 1)">
+                <img src="images/california_roll.jpg" alt="California Roll">
+                <div class="recipe-footer">
+                    <p class="recipe-name">California Roll</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="2" onclick="showRecipeDetails(event, 2)">
+                <img src="images/spicy_tuna_roll.jpg" alt="Spicy Tuna Roll">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Spicy Tuna Roll</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="3" onclick="showRecipeDetails(event, 3)">
+                <img src="images/salmon_avocado_roll.jpg" alt="Salmon Avocado Roll">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Salmon Avocado Roll</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="4" onclick="showRecipeDetails(event, 4)">
+                <img src="images/philadelphia_roll.jpg" alt="Philadelphia Roll">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Philadelphia Roll</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="5" onclick="showRecipeDetails(event, 5)">
+                <img src="images/inari_sushi.jpg" alt="Inari Sushi">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Inari Sushi</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>   
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="6" onclick="showRecipeDetails(event, 6)">
+                <img src="images/tamago_nigiri.jpg" alt="Tamago Nigiri">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Tamago Nigiri</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>            
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="7" onclick="showRecipeDetails(event, 7)">
+                <img src="images/salmon_nigiri.jpg" alt="Salmon Nigiri">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Salmon Nigiri</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>   
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="8" onclick="showRecipeDetails(event, 8)">
+                <img src="images/shrimp_nigiri.jpg" alt="Shrimp Nigiri">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Shrimp Nigiri</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>   
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="9" onclick="showRecipeDetails(event, 9)">
+                <img src="images/tuna_nigiri.jpg" alt="Tuna Nigiri">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Tuna Nigiri</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>   
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="10" onclick="showRecipeDetails(event, 10)">
+                <img src="images/tuna_mayo_maki.jpg" alt="Tuna Mayo Maki">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Tuna Mayo Maki</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>   
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="11" onclick="showRecipeDetails(event, 11)">
+                <img src="images/cucumber_maki.png" alt="Cucumber Maki">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Cucumber Maki</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>   
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="12" onclick="showRecipeDetails(event, 12)">
+                <img src="images/salmon_maki.jpg" alt="Salmon Maki">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Salmon Maki</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>   
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="13" onclick="showRecipeDetails(event, 13)">
+                <img src="images/tamago_maki.jpg" alt="Tamago Maki">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Tamago Maki</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>   
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="14" onclick="showRecipeDetails(event, 14)">
+                <img src="images/tuna_maki.jpg" alt="Tuna Maki">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Tuna Maki</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>   
+                </div>
+            </div>
+            <div class="recipe" data-recipe-id="15" onclick="showRecipeDetails(event, 15)">
+                <img src="images/avocado_maki.jpg" alt="Avocado Maki">
+                <div class="recipe-footer">
+                    <p class="recipe-name">Avocado Maki</p>
+                    <button class="favorite-button" onclick="toggleFavourite(event, this)">&#9734;</button>   
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- Favourites Section -->
+    <div id="favourites-section" class="container">
+        <h2>Favourites</h2>
+        <div id="favourites-container" class="recipes-container">
+        </div>
+    </div>
+   
+    <div id="recipe-modal" class="modal">
+        <div class="modal-content">
+            <span class="go-back" id="go-back-arrow" onclick="goBack()">&#8592;</span>
+            <div id="modal-recipe-content">
+                <img id="modal-recipe-image" src="" alt="Recipe Image" class="recipe-image">
+                <div class="recipe-header">
+                    <h2 class="recipe-name" id="modal-recipe-name"></h2>
+                    <div class="recipe-details">
+                        <p>Time: <span id="recipe-time"></span></p>
+                        <p>Difficulty: <span id="recipe-difficulty"></span></p>
+                        <p class="points">Points: <span id="recipe-points"></span></p>
+                    </div>
+                </div>
+                <div class="recipe-description">
+                    <h2 class="recipe-heading">Instructions</h2>
+                    <ol id="recipe-instructions"></ol> <!-- Changed to ordered list -->
+                </div>
+                <div class="recipe-ingredients">
+                    <h2 class="recipe-heading">Ingredients</h2>
+                    <ul id="recipe-ingredients"></ul> <!-- Changed to unordered list -->
+                </div>
+                <button id="complete-task-button" data-points="0">Complete Task</button>
+            </div>
+        </div>
+    </div>
+    <script src="scripts.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

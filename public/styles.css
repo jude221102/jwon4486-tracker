@@ -1,0 +1,534 @@
+/* General body styles */
+body {
+    font-family: 'poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Font stack */
+    font-size: 16px; /* Base font size */
+    line-height: 28px; /* Line height for readability */
+    color: #0d0c22; /* Text color */
+    background-color: rgba(0, 0, 0, 0); /* Transparent background */
+    margin: 0; /* Remove default margin */
+    padding: 0 100px; /* Add padding to the body */
+}
+
+/* Container and section styles */
+.container, #all-recipes, #favourites-section {
+    padding: 20px; /* Add padding to all sections */
+    display: none; /* Hide by default */
+}
+
+/* Active state for containers and sections */
+.container.active, #all-recipes.active, #favourites-section.active {
+    display: block; /* Show when active */
+}
+
+/* Navbar styles */
+.navbar {
+    display: flex; /* Flexbox layout */
+    background-color: #fff; /* White background */
+    overflow: hidden; /* Hide overflow */
+    margin: 20px 0 30px 0; /* Margin around navbar */
+    font-weight: 400; /* Normal font weight */
+    padding: 0; /* No padding */
+}
+
+/* Logo styles */
+.navbar .logo {
+    font-family: "abril-fatface", serif;
+    font-weight: 400;
+    font-style: normal;
+    color: green;
+    font-size: 24px; /* Adjust the size as needed */
+    margin-right: auto; /* Push the logo to the left */
+    padding: 10px; /* Add some padding */
+}
+
+/* Navbar link styles */
+.navbar a {
+    flex: 1; /* Equal width for links */
+    color: darkgray; /* Link color */
+    text-align: center; /* Center text */
+    padding: 10px 5px; /* Padding for links */
+    text-decoration: none; /* Remove underline */
+    font-weight: 400; /* Normal font weight */
+    font-style: normal; /* Normal font style */
+    font-variant: normal; /* Normal font variant */
+    text-transform: none; /* No text transformation */
+    text-decoration: none solid rgb(13, 12, 34); /* Text decoration color */
+}
+
+/* Active link styles */
+.navbar a.active {
+    color: black; /* Active link color */
+}
+
+/* Hover state for links */
+.navbar a:hover {
+    background-color: #ddd; /* Background color on hover */
+    color: black; /* Text color on hover */
+}
+
+/* Progress bar container */
+.progress-bar {
+    width: 100%; /* Full width */
+    background-color: #e0e0e0; /* Gray background */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Hide overflow */
+    margin-top: 20px; /* Top margin */
+}
+
+/* Inner part of the progress bar */
+.progress-bar-inner {
+    height: 30px; /* Height */
+    background-color: #ff8c00; /* Orange background */
+    text-align: center; /* Center text */
+    line-height: 30px; /* Center text vertically */
+    color: white; /* Text color */
+    font-family: 'Poppins', sans-serif; /* Font family */
+    border-radius: 8px; /* Rounded corners */
+}
+
+/* Recipes container grid layout */
+.recipes-container {
+    display: grid; /* Grid layout */
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); /* Responsive columns */
+    gap: 20px; /* Gap between items */
+    justify-content: center; /* Center items */
+}
+
+/* Favourites section specific grid layout */
+#favourites-section .recipes-container {
+    grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Larger columns */
+}
+
+/* Recipe card styles */
+.recipe {
+    text-align: left; /* Left align text */
+    padding: 10px; /* Padding */
+    position: relative; /* Relative positioning */
+    cursor: pointer; /* Pointer cursor */
+    border-radius: 10px; /* Rounded corners */
+    border: none; /* No border */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Column layout */
+    align-items: flex-start; /* Align items to start */
+}
+
+/* Image styles for favourites section */
+#favourites-section .recipe img {
+    height: 300px; /* Increased height */
+}
+
+/* General image styles for recipes */
+.recipe img {
+    width: 100%; /* Full width */
+    height: 200px; /* Fixed height */
+    object-fit: cover; /* Cover the area */
+    border-radius: 10px; /* Rounded corners */
+}
+
+/* Recipe name styles */
+.recipe-name {
+    flex: 1; /* Take up remaining space */
+    text-align: left; /* Left align text */
+    font-size: 14px; /* Font size */
+    font-weight: normal; /* Normal font weight */
+    color: #333; /* Text color */
+}
+
+/* Recipe footer styles */
+.recipe-footer {
+    display: flex; /* Flexbox layout */
+    justify-content: space-between; /* Space between items */
+    width: 100%; /* Full width */
+    align-items: center; /* Center items vertically */
+    margin-top: 10px; /* Top margin */
+    margin-bottom: 20px; /* Bottom margin */
+    padding: 0 10px; /* Padding */
+}
+
+/* Favorite button styles */
+.favorite-button {
+    font-size: 24px; /* Font size */
+    cursor: pointer; /* Pointer cursor */
+    color: #ccc; /* Color */
+    background: none; /* No background */
+    border: none; /* No border */
+}
+
+/* Filled favorite button styles */
+.favorite-button.filled {
+    color: black; /* Filled color */
+}
+
+/* Ensure no background color on hover for favorite button */
+.favorite-button:hover {
+    background: none; /* No background on hover */
+    color: black; /* Maintain the same color on hover */
+}
+
+/* Enlarged recipe favorite button styles */
+.recipe.enlarged .favorite-button {
+    font-size: 36px; /* Larger font size */
+    right: 10px; /* Right position */
+    color: #ccc; /* Color */
+    background: none; /* No background */
+    border: none; /* No border */
+    cursor: pointer; /* Pointer cursor */
+    position: absolute; /* Absolute positioning */
+    top: 20px; /* Top position */
+}
+
+/* Enlarged recipe styles */
+.recipe.enlarged {
+    width: 100%; /* Full width */
+    display: flex; /* Flexbox layout */
+    flex-direction: column; /* Column layout */
+    align-items: center; /* Center items */
+}
+
+/* Enlarged recipe image styles */
+.recipe.enlarged img {
+    width: 1000px ; /* Increased width */
+    height: 400px ; /* Increased height */
+    object-fit: cover ; /* Cover the area */
+    margin-top: 20px ; /* Top margin */
+    border: none ; /* No border */
+    border-radius: 10px ; /* Rounded corners */
+}
+
+/* Enlarged recipe footer styles */
+.recipe.enlarged .recipe-footer {
+    width: 1000px; /* Match image width */
+    margin-top: 20px; /* Top margin */
+    display: flex; /* Flexbox layout */
+    justify-content: space-between; /* Space between items */
+    padding: 0; /* No padding */
+}
+
+/* Recipe detail styles */
+.recipe-detail {
+    display: none;
+}
+
+.recipe-detail.visible {
+    display: block;
+}
+
+/* Modal styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+body, .modal-content {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Styles for the modal content */
+.modal-content {
+    padding: 20px; /* Add padding to bring content inward from the edge */
+    background-color: white;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: auto;
+    position: relative; /* Ensure relative positioning for the go-back arrow */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+/* Recipe header styles */
+.recipe-header {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* Increase gap for more spacing */
+    margin-top: 10px;
+}
+
+/* Default recipe name size */
+.recipe-name {
+    margin: 0;
+    font-size: 1em; /* Default font size */
+}
+
+/* Larger recipe name size within the modal */
+#modal-recipe-name {
+    font-size: 1.5em; /* Larger font size for the modal */
+}
+
+/* Larger recipe name size within the favorites section */
+#favourites-section .recipe-name {
+    font-size: 18px; /* Larger font size for the favorites section */
+    margin-top: 20px; /* Add more space between the image and the recipe name */
+}
+
+/* Adjust the navbar recipe name */
+.navbar .recipe-name {
+    font-size: 1.2em; /* Slightly larger font size for the navbar */
+    margin-left: 10px; /* Add some space from the left edge */
+}
+
+/* Recipe details styles */
+.recipe-details {
+    display: flex;
+    gap: 20px;
+}
+
+/* Recipe details paragraph styles */
+.recipe-details p {
+    margin: 0;
+    font-size: inherit; /* Ensure the font size matches the recipe name */
+}
+
+/* Styles for the go-back arrow */
+.go-back {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.go-back.visible {
+    display: block;
+}
+#favourites-container {
+    justify-content: start; /* Align single recipe to the left */
+}
+
+h1 {
+    font-size: 108px; /* Increase font size for "Hello, [Name]" */
+    font-weight: normal; /* Make it less bold */
+    margin-top: 60px; /* Add more space below the navigation bar */
+}
+
+h2 {
+    font-size: 32px; /* Increase font size for headings */
+    font-weight: normal; /* Make other headings less bold */
+    margin-top: 80px; /* Adjust this value to move the heading higher */
+   
+}
+
+#search-bar {
+    width: 100%;
+    border: none; /* Remove border */
+    outline: none; /* Remove outline */
+    color: #333; /* Dark gray text */
+    background-color: #f0f0f0; /* Light gray background */
+    padding: 10px;
+    margin: 10px 0 20px 0; /* Add more space below the search bar */
+    box-sizing: border-box;
+    font-size: 14px;
+    font-family: 'Poppins', 'Helvetica Neue', Helvetica, Arial, sans-serif; /* Set font to Poppins */
+    border-radius: 10px; /* Curve the corners */
+}
+
+#search-bar::placeholder {
+    color: #333; /* Dark gray placeholder text */
+    text-overflow: clip; /* Remove ellipsis */
+}
+
+#modal-recipe-content {
+    margin-top: 60px; /* Push content lower than the go back arrow */
+}
+
+/* Modal recipe image styles */
+.recipe-image {
+    width: 100%;
+    height: 300px; /* Set fixed height */
+    object-fit: cover; /* Crop the image to fit the height */
+    margin-bottom: 20px;
+    border-radius: 10px; /* Curve the corners of the image */
+}
+
+/* Modal recipe name styles */
+.recipe-name {
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+/* Modal recipe details styles */
+.recipe-details {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+/* Modal recipe details paragraph styles */
+.recipe-details p {
+    margin: 0;
+}
+
+/* Modal recipe description and ingredients styles */
+.recipe-description, .recipe-ingredients {
+    margin-bottom: 20px;
+}
+
+/* Modal recipe description and ingredients headings styles */
+.recipe-description h2, .recipe-ingredients h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+/* Modal section heading styles */
+.section-heading {
+    font-size: 22px; /* Adjust font size for section headings */
+    font-weight: normal; /* Make section headings bold */
+    margin-bottom: 100px;
+}
+
+/* Modal recipe description and ingredients paragraph styles */
+.recipe-description p, .recipe-ingredients p {
+    font-size: 16px; /* Match the size of lorem ipsum texts */
+}
+
+/* Modal recipe header styles */
+.recipe-header {
+    display: flex;
+    align-items: center;
+    gap: 20px; /* Increase gap for more spacing */
+    margin-top: 50px;
+}
+
+/* Modal recipe details styles */
+.recipe-details {
+    display: flex;
+    gap: 20px;
+}
+
+/* Modal recipe details paragraph styles */
+.recipe-details p {
+    margin: 0;
+    font-size: inherit; /* Ensure the font size matches the recipe name */
+}
+
+/* Modal recipe header styles */
+.recipe-header {
+    display: flex;
+    align-items: center;
+}
+
+/* Complete task button styles */
+button#complete-task-button {
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    background-color: transparent;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+/* Styles for the modal recipe image */
+#modal-recipe-image {
+    border-radius: 8px; /* Curved corners for the image */
+    width: 100%; /* Ensure the image takes the full width */
+    height: auto; /* Maintain aspect ratio */
+    object-fit: cover; /* Ensure the image covers the container without distortion */
+    max-height: 400px; /* Limit the height to avoid excessive size */
+}
+
+/* Styles for the Complete Task button */
+#complete-task-button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin-top: 20px;
+    background-color: white; /* Button background color */
+    color: black; /* Button text color */
+    font-family: 'Poppins', sans-serif; /* Poppins font */
+    font-size: 1.2em; /* Font size */
+    text-align: center;
+    border: none; /* No borders */
+    border-radius: 8px; /* Curved corners */
+    cursor: pointer;
+}
+
+#complete-task-button:hover {
+    background-color: darkgray; /* Darker background on hover */
+}
+
+/* Enlarged recipe name styles */
+.recipe.enlarged .recipe-name {
+    font-size: 24px; /* Larger font size */
+    font-weight: bold; /* Bold font weight */
+    color: #333; /* Text color */
+}
+
+/* Recipe details container */
+#recipe-details-container {
+    display: none; /* Hide by default */
+    padding: 20px; /* Padding */
+}
+
+/* Recipe details heading */
+#recipe-details-container h2 {
+    font-size: 24px; /* Font size */
+    margin-bottom: 20px; /* Bottom margin */
+}
+
+/* Recipe details section */
+.recipe-details {
+    display: flex; /* Flexbox layout */
+    justify-content: space-between; /* Space between items */
+    align-items: center; /* Center items vertically */
+    padding-left: 10px; /* Padding on the left */
+}
+
+/* Paragraphs within recipe details */
+.recipe-details p {
+    margin: 0; /* Remove default margin */
+    font-weight: normal; /* Normal font weight */
+}
+
+/* Points section within recipe details */
+.recipe-details .points {
+    margin-left: auto; /* Push points to the far right */
+    padding-left: 10px; /* Padding on the left */
+}
+
+/* Span elements within recipe details */
+.recipe-details span {
+    font-weight: normal; /* Normal font weight */
+}
+
+/* Recipe description section */
+.recipe-description {
+    margin-top: 20px; /* Top margin */
+}
+
+/* Recipe ingredients section */
+.recipe-ingredients {
+    margin-top: 20px; /* Top margin */
+}
+
+/* Recipe instructions section */
+.recipe-instructions {
+    margin-top: 20px; /* Top margin */
+}
+
+/* Back button styles */
+button {
+    margin-top: 20px; /* Top margin */
+    padding: 10px 20px; /* Padding */
+    font-size: 16px; /* Font size */
+    background-color: #ff8c00; /* Background color */
+    color: white; /* Text color */
+    border: none; /* No border */
+    border-radius: 5px; /* Rounded corners */
+    cursor: pointer; /* Pointer cursor */
+}
+
+/* Hover state for buttons */
+button:hover {
+    background-color: #e07b00; /* Darker background on hover */
+}
+
+
